@@ -16,6 +16,8 @@ def completeAssignmet(assignmet):
         if i == -1:# if any value is not assigned (= -1) then not complete assignemt 
             return False
     return True
+
+#recursive function for backTracking
 def backtracking(graph, assignment, colors, var):
     if completeAssignmet(assignment):
         return assignment
