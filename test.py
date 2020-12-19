@@ -3,10 +3,6 @@ import math
 import random
 from shapely.geometry import LineString
 
-def x():
-    y = 1
-    z = False
-    return y,z
+x = [1,2,3]
 
-a7a ,d = x()
-print(a7a)
+print(x != False)
