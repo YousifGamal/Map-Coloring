@@ -3,14 +3,10 @@ import math
 import random
 from shapely.geometry import LineString
 
+def x():
+    y = 1
+    z = False
+    return y,z
 
-
-for i in range(10):
-    if i == 2:
-        if i != 0:
-            for j in range (5):
-                print("j = ",j)
-                if j == 1:
-                    break
-            break
-    print("i = ",i)
+a7a ,d = x()
+print(a7a)

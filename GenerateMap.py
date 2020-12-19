@@ -6,6 +6,7 @@ import random
 def GenerateNPoints(n):
     points = []
     for i in range(0,n):
+        i = i#dummy just to remove warning
         p = (int(np.random.uniform(0,100)),int(np.random.uniform(0,100)))
         points.append(p)
     return points
@@ -123,20 +124,26 @@ def generateFinalMap(country):
             done = done and c["done"]
         if done == True:
             exitloop = True
-    print("it = ",it)
+    #print("it = ",it)
     return finalMap
 
                     
                     
 
 
+def GenerateInput(n):
+    points = GenerateNPoints(n)
+    country = generateCityList(points)
+    country = reorderNeighbourCities(country)
+    finalMap = generateFinalMap(country)
+    return finalMap,points
 
 
-
-
+'''
 points = GenerateNPoints(6)
 country = generateCityList(points)
 country = reorderNeighbourCities(country)
 finalMap = generateFinalMap(country)
 print(finalMap)
 print(points)
+'''
