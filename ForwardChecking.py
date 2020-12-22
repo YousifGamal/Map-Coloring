@@ -40,9 +40,9 @@ def backtrackingWFwdChkUtility(graph, assignment, domain ,var):
         return assignment
     for i in range(len(domain[var])):#for current var select a value from its domain
         assignment[var] = domain[var][i]#assign the value
+        oldDomain = copy.deepcopy(domain)
         if consistentAssignment(assignment,graph,var):#check if assignmet consistent
             #apply forward checking
-            oldDomain = copy.deepcopy(domain)
             domain = forwardChecking(assignment,domain,graph,var)
             if domain != False:  
                 result = backtrackingWFwdChkUtility(graph, assignment, domain, var+1)

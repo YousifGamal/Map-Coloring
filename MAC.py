@@ -18,27 +18,61 @@ def completeAssignmet(assignmet):
     return True
 
 
-def MAC(assignment, domain, graph, var):
-    neighbours = graph[var]
-    value = assignment[var]
+def MAC(assignment, domain, graph, i):
+    neighbours = graph[i]#neighbours if Xi
     #for all neighbours
+    queue = []
     for n in neighbours:
         if assignment[n] == -1:#unassigned neighbour
-            #remove the assigned value of the var from the neighbours of the var
-            if value in domain[n]:#if value is in the neighbour domain
-                domain[n].remove(value)#remove vlaue from neighbour domain
-                if len(domain[n]) == 0:#domain of neighbor became empty return false
-                    return False
+            newArc = (n,i)
+            queue.append(newArc)
     return domain
 
+
+def MAC_AC_3(queue, domain,graph, assignment):
+    while len(queue) > 0:#while queue not empty
+        arc = queue.pop(0)#remove first arc
+        i = arc[0]
+        j = arc[1]
+        if Revise(domain,graph,arc):#apply arc consistency
+            if len(domain[i]) == 0:#check if domaniI is empty
+                return False
+            neighbours = graph[i]#{unassigned neighbours of I} - j
+            for n in neighbours:
+                if n != j:
+                # if assignment[n] == -1 and n != j:
+                    newArc = (n,i)
+                    queue.append(newArc)
+        return True
+
+
 #Revise the domin if needed - Utility func for AC-3 
-def Revise(assignment, domain, graph, arc):
+def Revise(domain, graph, arc):
     revised = False
     domainI = domain[arc[0]]
     domainJ = domain[arc[1]]
-    #for val in domainI:
+    orgIDomain = copy.deepcopy(domainI)
+    for x in orgIDomain:
+        if checkBinaryConstraint(domainJ,x):
+            domainI.remove(x)
+            revised = True
+    return revised
 
-#def checkBinaryConstraint(domainJ,val):
+
+
+
+def checkBinaryConstraint(domainJ,x):
+    #get length of domain J
+    length = len(domainJ)
+    #check for x if in domain j
+    if x in domainJ:
+        length-=1
+    #check if there is no y that can be aassigned
+    if length <= 0:    #return true
+        return True
+    else:
+        return False
+    
     
 
 
@@ -49,9 +83,9 @@ def backtrackingWMACUtility(graph, assignment, domain ,var):
         return assignment
     for i in range(len(domain[var])):#for current var select a value from its domain
         assignment[var] = domain[var][i]#assign the value
+        oldDomain = copy.deepcopy(domain)
         if consistentAssignment(assignment,graph,var):#check if assignmet consistent
             #apply forward checking
-            oldDomain = copy.deepcopy(domain)
             macResult = MAC(assignment,domain,graph,var)
             if macResult != False:  
                 result = backtrackingWMACUtility(graph, assignment, domain, var+1)
@@ -87,7 +121,7 @@ graph = [[1,5],
             [0,1,2,3,4],
             ]
 '''
-n=8
+n=9
 
 graph, Nodes = GenerateMap.GenerateInput(n)
 result = backtrackingWMAC(n,graph,colors)

@@ -4,6 +4,9 @@ import random
 from shapely.geometry import LineString
 import copy
 
-x = [[1,2],[0,0]]
-print(x != False)
+queue = []
+for i in range(4):
+    newArc = (i,i)
+    queue.append(newArc)
 
+print(queue)
