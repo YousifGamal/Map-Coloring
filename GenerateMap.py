@@ -1,7 +1,8 @@
 import numpy as np
 from shapely.geometry import LineString
 import math 
-import random 
+import random
+import timeit
 
 def GenerateNPoints(n):
     points = []
@@ -137,6 +138,15 @@ def GenerateInput(n):
     country = reorderNeighbourCities(country)
     finalMap = generateFinalMap(country)
     return finalMap,points
+
+
+'''
+n = 50
+start = timeit.default_timer()
+result = GenerateInput(n)
+stop = timeit.default_timer()
+print("time = ", stop-start)
+'''
 
 
 '''

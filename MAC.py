@@ -83,9 +83,10 @@ def backtrackingWMACUtility(graph, assignment, domain ,var):
         return assignment
     for i in range(len(domain[var])):#for current var select a value from its domain
         assignment[var] = domain[var][i]#assign the value
-        oldDomain = copy.deepcopy(domain)
+        oldDomain = domain
         if consistentAssignment(assignment,graph,var):#check if assignmet consistent
             #apply forward checking
+            oldDomain = copy.deepcopy(domain)
             macResult = MAC(assignment,domain,graph,var)
             if macResult != False:  
                 result = backtrackingWMACUtility(graph, assignment, domain, var+1)
@@ -111,7 +112,7 @@ def backtrackingWMAC(n,graph,colors):
     return backtrackingWMACUtility(graph,assignment,domain,0)
 
 
-colors = ['R','G','B','Y']
+
 '''
 graph = [[1,5],
             [2,0,5],
@@ -121,7 +122,9 @@ graph = [[1,5],
             [0,1,2,3,4],
             ]
 '''
-n=9
+'''
+n=30
+colors = ['R','G','B']
 
 graph, Nodes = GenerateMap.GenerateInput(n)
 result = backtrackingWMAC(n,graph,colors)
@@ -134,4 +137,4 @@ else:
     print("------------Problem wasn't solved-----------------")
     print("Cities positions = ",Nodes)
     print("Map = ",graph)
-
+'''

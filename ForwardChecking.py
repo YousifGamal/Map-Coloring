@@ -68,7 +68,7 @@ def backtrackingWForwardChecking(n,graph,colors):
     return backtrackingWFwdChkUtility(graph,assignment,domain,0)
 
 
-colors = ['R','G','B','Y']
+
 '''
 graph = [[1,5],
             [2,0,5],
@@ -78,6 +78,8 @@ graph = [[1,5],
             [0,1,2,3,4],
             ]
 '''
+'''
+colors = ['R','G','B','Y']
 n=8
 
 graph, Nodes = GenerateMap.GenerateInput(n)
@@ -92,3 +94,4 @@ else:
     print("Cities positions = ",Nodes)
     print("Map = ",graph)
 
+'''

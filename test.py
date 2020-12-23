@@ -4,9 +4,25 @@ import random
 from shapely.geometry import LineString
 import copy
 
-queue = []
-for i in range(4):
-    newArc = (i,i)
-    queue.append(newArc)
+import timeit
 
-print(queue)
+colors = ['r','g','b','y']
+domain = []
+start = timeit.default_timer()
+for i in range(50):
+    domain.append(copy.deepcopy(colors))
+
+stop = timeit.default_timer()
+
+print('Time: ', stop - start)
+start = timeit.default_timer()
+orig = copy.deepcopy(domain)
+
+
+stop = timeit.default_timer()
+
+print('Time: ', stop - start)
+
+
+
+

@@ -41,7 +41,7 @@ def initializeBacktracking(n,graph,colors):
 
 
 
-colors = ['R','G','B','Y']
+
 '''
 graph = [[1,5],
             [2,0,5],
@@ -51,8 +51,12 @@ graph = [[1,5],
             [0,1,2,3,4],
             ]
 '''
-n=6
+'''
+colors = ['R','G','B']
+n=9
 graph, Nodes = GenerateMap.GenerateInput(n)
+graph =  [[3, 2, 5], [3, 2, 8], [3, 8, 1, 7, 4, 0, 5], [0, 1, 2, 8], 
+            [7, 8, 6, 2], [7, 2, 6, 0], [4, 7, 5], [4, 5, 6, 2], [4, 2, 1, 3]]
 result = initializeBacktracking(n,graph,colors)
 if result != False:
     print("#########Problem solved#############")
@@ -64,3 +68,4 @@ else:
     print("Cities positions = ",Nodes)
     print("Map = ",graph)
 
+'''
