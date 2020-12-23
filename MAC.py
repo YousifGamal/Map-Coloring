@@ -39,8 +39,8 @@ def MAC_AC_3(queue, domain,graph, assignment):
                 return False
             neighbours = graph[i]#{unassigned neighbours of I} - j
             for n in neighbours:
-                if n != j:
-                # if assignment[n] == -1 and n != j:
+                #if n != j:
+                if assignment[n] == -1 and n != j:
                     newArc = (n,i)
                     queue.append(newArc)
         return True
@@ -51,11 +51,16 @@ def Revise(domain, graph, arc):
     revised = False
     domainI = domain[arc[0]]
     domainJ = domain[arc[1]]
-    orgIDomain = copy.deepcopy(domainI)
-    for x in orgIDomain:
+    dIlenght = len(domainI)
+    z = 0
+    while z < dIlenght:
+        x = domainI[z]
         if checkBinaryConstraint(domainJ,x):
             domainI.remove(x)
             revised = True
+            z-=1 
+            dIlenght -= 1
+        z+=1
     return revised
 
 

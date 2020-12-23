@@ -6,23 +6,20 @@ import copy
 
 import timeit
 
-colors = ['r','g','b','y']
-domain = []
-start = timeit.default_timer()
-for i in range(50):
-    domain.append(copy.deepcopy(colors))
-
-stop = timeit.default_timer()
-
-print('Time: ', stop - start)
-start = timeit.default_timer()
-orig = copy.deepcopy(domain)
-
-
-stop = timeit.default_timer()
-
-print('Time: ', stop - start)
-
+domainI = [1,2,3,4]
+dIlenght = len(domainI)
+z = 0
+while z < dIlenght:
+    x = domainI[z]
+    if x == 2 or x == 4:
+        domainI.remove(x)
+        revised = True
+        z-=1 
+        dIlenght -= 1
+    z +=1
+print(domainI)
+domainI.pop(0)
+print(domainI)
 
 
 
