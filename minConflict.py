@@ -1,6 +1,7 @@
 import random
 import GenerateMap
 
+#radomly assign values to variables
 def intilaizeCSP(n, colors):
     assignment = []
     for i in range(n):
@@ -23,7 +24,7 @@ def conflicts(assignment,finalMap):
         eachVarConflict.append(localConflict)
     return totalConflicts, eachVarConflict
 
-#assign a value for the given variable(var) to minimize number of conflicts
+#assign a value for the given conflicted variable(var) to minimize number of conflicts
 def minimizeConflict(var,assignment,finalMap,colors):
     currentConflicts, eachVarConflict = conflicts(assignment,finalMap)
     oldColor = assignment[var]# old color so we don't do reduntant check
@@ -38,7 +39,7 @@ def minimizeConflict(var,assignment,finalMap,colors):
     assignment[var] = value
 
 
-
+#Minimum Conflict algorithm
 def MinConflicts(n,finalMap,colors,maxSteps):
     assignemt = intilaizeCSP(n,colors)
     for i in range(maxSteps):

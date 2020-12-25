@@ -17,18 +17,18 @@ def completeAssignmet(assignmet):
             return False
     return True
 
-
+#MAC function
 def MAC(assignment, domain, graph, i):
-    neighbours = graph[i]#neighbours if Xi
+    neighbours = graph[i]#neighbours of Xi
     #for all neighbours
     queue = []
     for n in neighbours:
         if assignment[n] == -1:#unassigned neighbour
-            newArc = (n,i)
+            newArc = (n,i)#add the neighbour arc to the initial queue
             queue.append(newArc)
-    return domain
+    return MAC_AC_3(queue, domain, graph, assignment)
 
-
+#AC-3 algorithm but with MAC initial queue
 def MAC_AC_3(queue, domain,graph, assignment):
     while len(queue) > 0:#while queue not empty
         arc = queue.pop(0)#remove first arc
@@ -55,7 +55,8 @@ def Revise(domain, graph, arc):
     z = 0
     while z < dIlenght:
         x = domainI[z]
-        if checkBinaryConstraint(domainJ,x):
+        if checkBinaryConstraint(domainJ,x):#if violates binary constraint
+            #remove x from the domain of Xi
             domainI.remove(x)
             revised = True
             z-=1 
@@ -65,7 +66,7 @@ def Revise(domain, graph, arc):
 
 
 
-
+#return true if violates binary constraint 
 def checkBinaryConstraint(domainJ,x):
     #get length of domain J
     length = len(domainJ)
@@ -104,34 +105,35 @@ def backtrackingWMACUtility(graph, assignment, domain ,var):
 
 
 
-#initialzie all nodes with invalid assignmet = -1
-#all vars domain is the same (all colors)
-#and start the algorithm
+
+
+#Backtracking with MAC algorithm
 def backtrackingWMAC(n,graph,colors):
     assignment = []
     domain = []
     for i in range(n):
+        #initialzie all nodes with invalid assignmet = -1
         assignment.append(-1)
         i = i#dummy assignment for the warning
+        #all vars have the same initial domain 
         domain.append(copy.deepcopy(colors))
+    #start the algorithm
     return backtrackingWMACUtility(graph,assignment,domain,0)
 
 
 
+
+
 '''
-graph = [[1,5],
-            [2,0,5],
-            [1,3,5],
-            [2,4,5],
-            [3,5],
-            [0,1,2,3,4],
-            ]
-'''
-'''
-n=30
-colors = ['R','G','B']
+n=40
+colors = ['R','G','B','Y']
 
 graph, Nodes = GenerateMap.GenerateInput(n)
+print("Graph generated")
+
+graph = [[1,5],[2,0,5],[1,3,5],[2,4,5],[3,5],[0,1,2,3,4],]
+
+
 result = backtrackingWMAC(n,graph,colors)
 if result != False:
     print("#########Problem solved#############")

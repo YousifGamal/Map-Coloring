@@ -17,7 +17,8 @@ def completeAssignmet(assignmet):
             return False
     return True
 
-
+#forward checking function
+#Remove the assigned val of the var from the domain of unaasigned neighbours of var
 def forwardChecking(assignment, domain, graph, var):
     neighbours = graph[var]
     value = assignment[var]
@@ -56,16 +57,19 @@ def backtrackingWFwdChkUtility(graph, assignment, domain ,var):
 
 
 
-#initialzie all nodes with invalid assignmet = -1
-#all vars domain is the same (all colors)
-#and start the algorithm
+
+
+#Backtracking with Forward Checking Algorithm
 def backtrackingWForwardChecking(n,graph,colors):
     assignment = []
     domain = []
     for i in range(n):
+        #initialzie all nodes with invalid assignmet = -1
         assignment.append(-1)
         i = i#dummy assignment for the warning
+        #all vars have the same intial domain
         domain.append(copy.deepcopy(colors))
+    #start the algorithm
     return backtrackingWFwdChkUtility(graph,assignment,domain,0)
 
 

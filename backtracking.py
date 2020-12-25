@@ -30,13 +30,15 @@ def backtracking(graph, assignment, colors, var):
         assignment[var] = -1
     return False
 
-#initialzie all nodes with invalid assignmet = -1
-#and start the algorithm
+
+#Backtracking Algorithm
 def initializeBacktracking(n,graph,colors):
     assignment = []
+    #initialzie all nodes with invalid assignmet = -1
     for i in range(n):
         assignment.append(-1)
         i = i#dummy assignment for the warning
+    #start the algorithm
     return backtracking(graph,assignment,colors,0)
 
 
