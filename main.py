@@ -51,7 +51,7 @@ def main():
         if runs == 1:
             print("Cities positions = ",Nodes)
             print("Map = ",graph)
-        print("graph generated")
+        #print("graph generated")
         #minimum conflicts
         start = timeit.default_timer()
         solved, assignment = minConflict.MinConflicts(n,graph,colors,maxSteps)

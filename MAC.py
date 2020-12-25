@@ -1,4 +1,3 @@
-import GenerateMap
 import copy
 #checks if current assignment is consistent 
 def consistentAssignment(assignment,graph,var):
@@ -122,26 +121,3 @@ def backtrackingWMAC(n,graph,colors):
 
 
 
-
-
-'''
-n=40
-colors = ['R','G','B','Y']
-
-graph, Nodes = GenerateMap.GenerateInput(n)
-print("Graph generated")
-
-graph = [[1,5],[2,0,5],[1,3,5],[2,4,5],[3,5],[0,1,2,3,4],]
-
-
-result = backtrackingWMAC(n,graph,colors)
-if result != False:
-    print("#########Problem solved#############")
-    print("Cities positions = ",Nodes)
-    print("Map = ",graph)
-    print("City colors in order = ",result)
-else:
-    print("------------Problem wasn't solved-----------------")
-    print("Cities positions = ",Nodes)
-    print("Map = ",graph)
-'''

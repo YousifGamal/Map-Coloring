@@ -1,5 +1,5 @@
 import random
-import GenerateMap
+
 
 #radomly assign values to variables
 def intilaizeCSP(n, colors):
@@ -67,35 +67,3 @@ def MinConflicts(n,finalMap,colors,maxSteps):
 
 
 
-
-#dummy data
-
-'''
-finalMap = [[1,5],
-            [2,0,5],
-            [1,3,5],
-            [2,4,5],
-            [3,5],
-            [0,1,2,3,4],
-            ]
-# 0->R, 1->G, 0->B,
-'''
-'''
-colors = ['R','G','B'] 
-n = 5
-maxSteps = 100
-
-finalMap, Nodes = GenerateMap.GenerateInput(n)
-solved, assignment = MinConflicts(n,finalMap,colors,maxSteps)
-print("GD3ANA")
-if solved:
-    print("#########Problem solved#############")
-    print("Cities positions = ",Nodes)
-    print("Map = ",finalMap)
-    print("City colors in order = ",assignment)
-else:
-    print("------------Problem wasn't solved-----------------")
-    print("Cities positions = ",Nodes)
-    print("Map = ",finalMap)
-    print("City colors in order = ",assignment)
-'''

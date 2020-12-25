@@ -1,4 +1,3 @@
-import GenerateMap
 import copy
 #checks if current assignment is consistent 
 def consistentAssignment(assignment,graph,var):
@@ -73,30 +72,3 @@ def backtrackingWForwardChecking(n,graph,colors):
     return backtrackingWFwdChkUtility(graph,assignment,domain,0)
 
 
-
-'''
-graph = [[1,5],
-            [2,0,5],
-            [1,3,5],
-            [2,4,5],
-            [3,5],
-            [0,1,2,3,4],
-            ]
-'''
-'''
-colors = ['R','G','B','Y']
-n=8
-
-graph, Nodes = GenerateMap.GenerateInput(n)
-result = backtrackingWForwardChecking(n,graph,colors)
-if result != False:
-    print("#########Problem solved#############")
-    print("Cities positions = ",Nodes)
-    print("Map = ",graph)
-    print("City colors in order = ",result)
-else:
-    print("------------Problem wasn't solved-----------------")
-    print("Cities positions = ",Nodes)
-    print("Map = ",graph)
-
-'''
